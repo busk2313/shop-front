@@ -1,0 +1,32 @@
+$fonts: (
+        'Light': ('path': '@/assets/fonts/SFProText-Light.ttf', 'weight': (300), 'style': (normal)),
+        'LightItalic': ('path': '@/assets/fonts/SFProText-LightItalic.ttf', 'weight': (300), 'style': (italic)),
+        'Regular': ('path': '@/assets/fonts/SFProText-Regular.ttf', 'weight': (400), 'style': (normal)),
+        'RegularItalic': ('path': '@/assets/fonts/SFProText-RegularItalic.ttf', 'weight': (400), 'style': (italic)),
+        'Medium': ('path': '@/assets/fonts/SFProText-Medium.ttf', 'weight': (500), 'style': (normal)),
+        'MediumItalic': ('path': '@/assets/fonts/SFProText-MediumItalic.ttf', 'weight': (500), 'style': (italic)),
+        'Semibold': ('path': '@/assets/fonts/SFProText-Semibold.ttf', 'weight': (600), 'style': (normal)),
+        'SemiboldItalic': ('path': '@/assets/fonts/SFProText-SemiboldItalic.ttf', 'weight': (600), 'style': (italic)),
+        'Bold': ('path': '@/assets/fonts/SFProText-Bold.ttf', 'weight': (700), 'style': (normal)),
+        'BoldItalic': ('path': '@/assets/fonts/SFProText-BoldItalic.ttf', 'weight': (700), 'style': (italic)),
+        'Heavy': ('path': '@/assets/fonts/SFProText-Heavy.ttf', 'weight': (900), 'style': (normal)),
+        'HeavyItalic': ('path': '@/assets/fonts/SFProText-HeavyItalic.ttf', 'weight': (900), 'style': (italic)),
+);
+
+@mixin font-face($font-path, $font-weight, $font-style) {
+  @font-face {
+    font-family: 'SF Pro Text';
+    src: url("#{$font-path}") format('truetype');
+    font-weight: $font-weight;
+    font-style: $font-style;
+    font-display: swap;
+  }
+}
+
+@each $font-name, $font-data in $fonts {
+  $font-path: map-get($font-data, 'path');
+  $font-weight: map-get($font-data, 'weight');
+  $font-style: map-get($font-data, 'style');
+
+  @include font-face($font-path, $font-weight, $font-style)
+}
